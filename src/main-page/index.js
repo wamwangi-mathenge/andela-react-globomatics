@@ -14,15 +14,12 @@ function App() {
     fetchHouses();
   }, []);
 
-  useMemo(() => {
-
+  const featuredHouse = useMemo(() => {
+    if (allHouses.length) {
+      const randomIndex = Math.floor(Math.random() * allHouses.length);
+      return allHouses[randomIndex]
+    }
   }, [allHouses])
-
-  let featuredHouse = {};
-  if (allHouses.length) {
-    const randomIndex = Math.floor(Math.random() * allHouses.length);
-    featuredHouse = allHouses[randomIndex]
-  }
 
   return (
     <div className="container">
